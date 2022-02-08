@@ -65,5 +65,9 @@ https://github.com/neoclide/coc.nvim
 * coc-tsserver -- Typescript language server
 * coc-json     -- JSON language server
 * coc-java     -- Java language server
+* ccls - C language server
 
+```bash
+https://github.com/MaskRay/ccls/wiki
+```
 
