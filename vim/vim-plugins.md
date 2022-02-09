@@ -46,10 +46,22 @@ https://github.com/charmbracelet/glow
 https://github.com/dense-analysis/ale
 ```
 
+* GitGutter - Shows diff symbols in the side gutter
+
+```bash
+https://github.com/airblade/vim-gitgutter
+```
+
 * Vista - Code Symbol Navigation
 
 ```bash
 https://github.com/liuchengxu/vista.vim
+```
+
+* Java Autocomplete
+
+```bash
+https://github.com/artur-shaik/vim-javacomplete2
 ```
 
 #### COC

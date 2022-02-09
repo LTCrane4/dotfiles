@@ -29,6 +29,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+" Javacomplete required setup
+" commented because it's not working right now
+" autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 " NERDTree keybindings
 nnoremap <C-t> :NERDTreeToggle<CR> 
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -89,4 +93,24 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+" alias format action
+command! -nargs=0 Format :call CocActionAsync('format')
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f :call Format<CR>
+nmap <leader>f :call Format<CR>
+
+" COC import function (test)
+nmap<silent> <leader>i <Plug>(coc-fix-current)
+
+" Vista keymappings
+nnoremap <leader>v :Vista<CR>
 
