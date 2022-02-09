@@ -1,5 +1,5 @@
 # !/bin/bash
-# A simple script that will symlink .bashrc and .bash_profile into the user's home directory
+# A simple script that will back up and symlink dotfiles into the user's home directory
 
 BASHRC=~/.bashrc
 BASH_PROFILE=~/.bash_profile
@@ -20,4 +20,17 @@ fi
 
 echo "Symlinking .bash_profile"
 ln -s ./.bash_profile ~/.bash_profile
+
+echo "Checking vim installation"
+if [[ -e $(which vim) ]]; then
+  echo "Vim install found!"
+  if [[ -e "~/.vimrc" ]]; then
+    echo "Backing up existing .vimrc"
+    mv ~/.vimrc ~/vimrc.bak
+  fi
+
+  ln -s ./vimrc ~/.vimrc
+else
+  echo "No vim install detected.  Please install vim and try again"
+fi
 
