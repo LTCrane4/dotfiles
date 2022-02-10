@@ -2,6 +2,10 @@
 # ~/.bashrc
 #
 
+if [[ -e $(which vim) ]]; then
+  export EDITOR="$(which vim)"
+fi
+
 [[ $- != *i* ]] && return
 
 # Enable pureline
