@@ -160,7 +160,6 @@ complete -f -F _dotnet_bash_complete dotnet
 # Teddy - Aliases
 alias la="ls -latG --color"
 alias open="xdg-open"
-alias vim="nvim"
 
 # Git cli completion
 source /usr/share/bash-completion/completions/git
