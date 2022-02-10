@@ -4,6 +4,14 @@
 
 [[ $- != *i* ]] && return
 
+# Enable pureline
+source ~/pureline/pureline ~/.pureline.conf
+
+# Uncomment for no pureline in TTY
+# if [ "$TERM" != "linux" ]; then
+  # source ~/pureline/pureline ~/.pureline.conf
+# fi
+
 colors() {
 	local fgc bgc vals seq0
 
@@ -171,7 +179,7 @@ export MTP_NO_PROBE="1"
 
 # Add local binaries to path
 export PATH="/home/teddyc/.local/bin:/usr/local/dotnet:$PATH"
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
