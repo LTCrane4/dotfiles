@@ -9,7 +9,7 @@ fi
 [[ $- != *i* ]] && return
 
 # Enable pureline
-source ~/pureline/pureline ~/.pureline.conf
+# source ~/pureline/pureline ~/.pureline.conf
 
 # Uncomment for no pureline in TTY
 # if [ "$TERM" != "linux" ]; then
