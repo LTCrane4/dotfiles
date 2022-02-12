@@ -538,9 +538,9 @@ selection:
 #
 # - `mods` (see key bindings)
 #mouse_bindings:
-  - { mouse: Right,                 action: CopySelection   }
-  - { mouse: Right,  mods: Control, action: ExpandSelection }
-  - { mouse: Middle,                action: PasteSelection  }
+#  - { mouse: Right,                 action: CopySelection   }
+#  - { mouse: Right,  mods: Control, action: ExpandSelection }
+#  - { mouse: Middle,                action: PasteSelection  }
 
 # Key bindings
 #
