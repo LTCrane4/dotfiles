@@ -22,7 +22,7 @@
             }
         }
     },
-  "java.home": "/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home",
+  "java.home": "/usr/lib/jvm/default",
   "java.autobuild.enabled": true,
   "java.format.enabled": true,
   "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",

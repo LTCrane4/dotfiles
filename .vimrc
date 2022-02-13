@@ -19,15 +19,31 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 
+" Mouse settings
+if has ('mouse') 
+  " Set mouse click to enter insert mode
+  set mouse=a
+endif
+
 " Set up splitting right and below
 set splitbelow
 set splitright
+
+" Set folding
+set foldmethod=syntax
+set foldlevel=99
 
 " Set whitespace config
 set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set backspace=indent,eol,start
+
+" Search Settings
+set hlsearch
+set ignorecase
+set smartcase
 
 " Javacomplete required setup
 " commented because it's not working right now
