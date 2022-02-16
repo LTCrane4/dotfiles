@@ -1,7 +1,11 @@
 #
 # ~/.bashrc
 #
-neofetch
+
+# enable neofetch only if it exists
+if [[ -e $(which neofetch) ]]; then
+  neofetch
+fi
 
 if [[ -e $(which vim) ]]; then
   export EDITOR="$(which vim)"

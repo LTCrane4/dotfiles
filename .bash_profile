@@ -2,8 +2,9 @@
 # ~/.bash_profile
 #
 
+# Linux-specific config for display manager
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
- exec startx
+  exec startx
 fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
