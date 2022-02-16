@@ -1,6 +1,7 @@
 #
 # ~/.bashrc
 #
+neofetch
 
 if [[ -e $(which vim) ]]; then
   export EDITOR="$(which vim)"
