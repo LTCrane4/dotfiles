@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 
-# enable neofetch only if it exists
+# Call neofetch if it exists
 if [[ -e $(which neofetch) ]]; then
   neofetch
 fi
@@ -12,14 +12,6 @@ if [[ -e $(which vim) ]]; then
 fi
 
 [[ $- != *i* ]] && return
-
-# Enable pureline
-# source ~/pureline/pureline ~/.pureline.conf
-
-# Uncomment for no pureline in TTY
-# if [ "$TERM" != "linux" ]; then
-  # source ~/pureline/pureline ~/.pureline.conf
-# fi
 
 colors() {
 	local fgc bgc vals seq0
@@ -81,38 +73,49 @@ git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-if ${use_color} ; then
-	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
-	if type -P dircolors >/dev/null ; then
-		if [[ -f ~/.dir_colors ]] ; then
-			eval $(dircolors -b ~/.dir_colors)
-		elif [[ -f /etc/DIR_COLORS ]] ; then
-			eval $(dircolors -b /etc/DIR_COLORS)
-		fi
-	fi
+# if [[ -f "~/.local/bin/powerline-shell" ]]; then
+  # Powerline shell PS1 config
+  #function _update_ps1() {
+    #PS1=$(powerline-shell $?)
+  #}
 
-	if [[ ${EUID} == 0 ]] ; then
-		# PS1='\[\e[1;31m\][\e[1;32m]\u@\h\[\e[01;36m\] \W\[\e[01;31m\]]$(git_branch)\$\[\e[00m\] '
-		# PS1='\[\[\e[1;31m\]\][\[\e[1;32m\]\]\u\[\[\e[1;35m\]\] \W\[\[\e[1;32m\]\]\[\e[1;31m\]\]]\[\e[1;37m\]\]\[\e[0;36m\]\]$(git_branch)\[\e[1;37m\]\]\$\[\e[00m\]\] '
-    PS1='\[\e[1;31m\]!\u@\h]\[\e[1;37m\]\$ '
-	else
-		# PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]$(git_branch)\$\[\033[00m\] '
-		#PS1='\[\[\e[1;31m\]\][\[\e[1;33m\]\]\u\[\e[0;32m\]\]@\[\e[1;34m\]\]\h\[\[\e[1;35m\]\] \W\[\[\e[1;32m\]\]\[\e[1;31m\]\]]\[\e[1;37m\]\]\[\e[0;36m\]\]$(git_branch)\[\e[1;37m\]\]\$\[\e[00m\]\] '
-    PS1='\[\e[1;31m\][\[\e[1;33m\]\u\[\e[0;32m\]@\[\e[1;34m\]\h\[\e[1;35m\] \W\[\e[1;32m\]\[\e[1;31m\]]\[\e[1;37m\]\[\e[0;36m\]$(git_branch)\[\e[1;37m\]\$\[\e[00m\] '
-	fi
+  #if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    #PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+  # fi  
+#else
+  if ${use_color} ; then
+	  # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
+	  if type -P dircolors >/dev/null ; then
+		  if [[ -f ~/.dir_colors ]] ; then
+			  eval $(dircolors -b ~/.dir_colors)
+		  elif [[ -f /etc/DIR_COLORS ]] ; then
+			  eval $(dircolors -b /etc/DIR_COLORS)
+		  fi
+	  fi
 
-	alias ls='ls --color=auto'
-	alias grep='grep --colour=auto'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
-else
-	if [[ ${EUID} == 0 ]] ; then
-		# show root@ when we don't have colors
-		PS1='\u@\h \W \$ '
-	else
-		PS1='\u@\h \w \$ '
-	fi
-fi
+	  if [[ ${EUID} == 0 ]] ; then
+		  # PS1='\[\e[1;31m\][\e[1;32m]\u@\h\[\e[01;36m\] \W\[\e[01;31m\]]$(git_branch)\$\[\e[00m\] '
+		  j# PS1='\[\[\e[1;31m\]\][\[\e[1;32m\]\]\u\[\[\e[1;35m\]\] \W\[\[\e[1;32m\]\]\[\e[1;31m\]\]]\[\e[1;37m\]\]\[\e[0;36m\]\]$(git_branch)\[\e[1;37m\]\]\$\[\e[00m\]\] '
+      PS1='\[\e[1;31m\]!\u@\h]\[\e[1;37m\]\$ '
+	  else
+		  # PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]$(git_branch)\$\[\033[00m\] '
+		  #PS1='\[\[\e[1;31m\]\][\[\e[1;33m\]\]\u\[\e[0;32m\]\]@\[\e[1;34m\]\]\h\[\[\e[1;35m\]\] \W\[\[\e[1;32m\]\]\[\e[1;31m\]\]]\[\e[1;37m\]\]\[\e[0;36m\]\]$(git_branch)\[\e[1;37m\]\]\$\[\e[00m\]\] '
+      PS1='\[\e[1;31m\][\[\e[1;33m\]\u\[\e[0;32m\]@\[\e[1;34m\]\h\[\e[1;35m\] \W\[\e[1;32m\]\[\e[1;31m\]]\[\e[1;37m\]\[\e[0;36m\]$(git_branch)\[\e[1;37m\]\$\[\e[00m\] '
+	  fi
+
+	  alias ls='ls --color=auto'
+	  alias grep='grep --colour=auto'
+	  alias egrep='egrep --colour=auto'
+	  alias fgrep='fgrep --colour=auto'
+  else
+	  if [[ ${EUID} == 0 ]] ; then
+		  # show root@ when we don't have colors
+		  PS1='\u@\h \W \$ '
+	  else
+		  PS1='\u@\h \w \$ '
+	  fi
+  fi
+# fi
 
 unset use_color safe_term match_lhs sh
 
@@ -198,4 +201,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export MAKEFLAGS='-j4'
+
 

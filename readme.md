@@ -13,6 +13,7 @@ A few other packages are required to use this configuration without error
 
 * vim - obviously with the packages outlined in the vim directory.
 * Bash Completion - This can be installed using the instructions below
+* Powerline - (link here)[https://github.com/b-ryan/powerline-shell]
 
 ### Bash-Completion Instructions
 
