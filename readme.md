@@ -14,6 +14,7 @@ A few other packages are required to use this configuration without error
 * vim - obviously with the packages outlined in the vim directory.
 * Bash Completion - This can be installed using the instructions below
 * Powerline - (link here)[https://github.com/b-ryan/powerline-shell]
+* (zsh syntax highlighting)[https://github.com/zsh-users/zsh-syntax-highlighting.git]
 
 ### Bash-Completion Instructions
 
@@ -26,4 +27,19 @@ A few other packages are required to use this configuration without error
 ```bash
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 ```
+
+### Zsh Syntax Highlighting
+
+#### Gentoo (emerge)
+
+```bash
+app-shells/zsh-syntax-highlighting
+```
+
+#### Macos
+
+```bash
+brew install zsh-syntax-highlighting
+```
+
 
