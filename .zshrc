@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
+
 # Pull in files from .zshincludes
 if [[ -d "~/.zshincludes" ]]; then
   for file in ~/.zshincludes/*.zsh; do
@@ -12,24 +14,24 @@ if [[ -d "~/.zshincludes" ]]; then
     [[ -r $file ]] && source $file;
   done
 fi
-
-if [[ -e $(which vim) ]]; then
-  export EDITOR="$(which vim)"
-fi
+# 
+# if [[ -e $(which vim) ]]; then
+#   export EDITOR="$(which vim)"
+# fi
 
 [[ $- != *i* ]] && return
 
 # [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
-# Change the window title of X terminals
-case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-		;;
-	screen*)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-		;;
-esac
+# # Change the window title of X terminals
+# case ${TERM} in
+# 	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+# 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+# 		;;
+# 	screen*)
+# 		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
+# 		;;
+# esac
 
 use_color=true
 
@@ -97,13 +99,13 @@ ex ()
 alias la="ls -latG --color"
 alias open="xdg-open"
 
-# export JAVA_HOME="/usr/lib/jvm/default"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-export MAKEFLAGS='-j4'
-
+# # export JAVA_HOME="/usr/lib/jvm/default"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home"
+# 
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# export MAKEFLAGS='-j4'
+# 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
