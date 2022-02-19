@@ -5,12 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-
 # Pull in files from .zshincludes
-if [[ -d "~/.zshincludes" ]]; then
-  for file in ~/.zshincludes/*.zsh; do
-    echo $file
+if [[ -d "~/.zsh_includes" ]]; then
+  for file in ~/.zsh_includes/*.zsh; do
     [[ -r $file ]] && source $file;
   done
 fi
@@ -73,7 +70,7 @@ xhost +local:root > /dev/null 2>&1
 #
 # # ex - archive extractor
 # # usage: ex <file>
-ex ()
+function ex ()
 {
   if [ -f $1 ] ; then
     case $1 in
@@ -111,5 +108,5 @@ alias open="xdg-open"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

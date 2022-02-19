@@ -117,7 +117,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Roboto Mono for Powerline
+    family: "MesloLGS NF"
     # family: Comic Mono
 
     # The `style` can be specified to pick a specific face.
@@ -129,8 +129,9 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Roboto Mono for Powerline
+    # family: Roboto Mono for Powerline
     # family: Comic Mono
+    family: "MesloLGS NF"
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -142,7 +143,8 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Roboto Mono for Powerline
+    # family: Roboto Mono for Powerline
+    family: "MesloLGS NF"
 
     # The `style` can be specified to pick a specific face.
     style: Italic
