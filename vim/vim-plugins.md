@@ -64,6 +64,18 @@ https://github.com/liuchengxu/vista.vim
 https://github.com/artur-shaik/vim-javacomplete2
 ```
 
+* typescript-vim
+
+```bash
+https://github.com/leafgarland/typescript-vim
+```
+
+* vim-jsx-typescript
+
+```bash
+https://github.com/peitalin/vim-jsx-typescript
+```
+
 #### COC
 
 * COC - Code completion.  COC requires a `node` version of 12.2 or greater
