@@ -119,10 +119,10 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 " alias format action
 command! -nargs=0 Format :call CocActionAsync('format')
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
-xmap <leader>f :call Format<CR>
-nmap <leader>f :call Format<CR>
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f :call Format<CR>
+" nmap <leader>f :call Format<CR>
 
 " COC import function (test)
 nmap<silent> <leader>i <Plug>(coc-fix-current)
