@@ -4,6 +4,9 @@ syntax on
 set number
 filetype plugin indent on
 
+" Set colorscheme to molokai
+colorscheme molokai
+
 " Key Remappings
 " ESC remappings
 inoremap jk <ESC>

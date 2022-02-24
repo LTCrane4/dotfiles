@@ -1,6 +1,7 @@
 #!/bin/bash
 # A script to install vim plugins
 WORKDIR=$(pwd)
+VIM_CONFIG="$HOME/.vim"
 
 if [[ -e "$HOME/.vimrc" ]]; then
   echo "Backing up existing vimrc"
@@ -10,22 +11,29 @@ fi
 echo "Linking .vimrc" 
 ln -s $WORKDIR/.vimrc $HOME/.vimrc
 
+if [[ ! -e "$VIM_CONFIG/autoload"  && ! -e "$VIM_CONFIG/bundle" && ! -e "$VIM_CONFIG/colors" ]]; then
+  echo "Creating vim plugin directories"
+  mkdir -pv $HOME/.vim/{autoload,bundle,colors}
+fi
+
 echo "Installing pathogen"
-if [[ ! -e "$HOME/.vim/autoload/pathogen.vim" ]]; then
-  if [[ ! -d "$HOME/.vim/bundle" ]]; then
-    mkdir -p $HOME/.vim/{autoload,bundle}
-  fi
+if [[ ! -e "$VIM_CONFIG/autoload/pathogen.vim" ]]; then
   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
-pushd $HOME/.vim/bundle
-echo "Installing vim utilities"
+echo "Installing color schemes"
+if [[ ! -e "$VIM_CONFIG/colors/molokai.vim" ]]; then
+  pushd $VIM_CONFIG/colors
+  curl -fsSL https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim >> molokai.vim
+  popd
+fi
 
+echo "Installing vim utilities"
+pushd $VIM_CONFIG/bundle
 if [[ ! -d "./nerdtree" ]]; then
   echo "Installing NERDTree"
   git clone https://github.com/preservim/nerdtree.git
 fi
-
 if [[ ! -d "./vim-airline" ]]; then
   echo "Installing vim-airline"
   git clone https://github.com/vim-airline/vim-airline
@@ -54,8 +62,10 @@ fi
 echo "Installing dependencies for coc.nvim"
 pushd coc.nvim 
 yarn install
+# Exit coc.nvim dir
 popd
 echo "Done!"
+# exit .vim/bundle dir
 popd
 exit 0
 

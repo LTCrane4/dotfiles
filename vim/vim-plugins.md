@@ -13,6 +13,14 @@ https://github.com/tpope/vim-pathogen
 https://github.com/junegunn/vim-plug
 ```
 
+## Color Schemes
+
+* Molokai
+
+```bash
+https://github.com/tomasr/molokai
+```
+
 ## Plugins
 
 ### File Browser
