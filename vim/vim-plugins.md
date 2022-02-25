@@ -54,6 +54,12 @@ https://github.com/charmbracelet/glow
 https://github.com/dense-analysis/ale
 ```
 
+* vim-test - Vim test runner
+
+```bash
+https://github.com/vim-test/vim-test
+```
+
 * GitGutter - Shows diff symbols in the side gutter
 
 ```bash

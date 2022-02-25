@@ -65,7 +65,7 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" always show signcolumns
+" always show signcolumns (vim-gitgutter)
 set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -124,10 +124,8 @@ nmap <leader>rn <Plug>(coc-rename)
 command! -nargs=0 Format :call CocActionAsync('format')
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-" xmap <leader>f :call Format<CR>
-" nmap <leader>f :call Format<CR>
 
-" COC import function (test)
+" COC import function
 nmap<silent> <leader>i <Plug>(coc-fix-current)
 
 " Vista keymappings
