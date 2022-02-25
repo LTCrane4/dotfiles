@@ -1,35 +1,10 @@
 #!/bin/bash
-# A script to install vim plugins
-WORKDIR=$(pwd)
+# Installs all vim dependencies for the vimrc in this repository
 VIM_CONFIG="$HOME/.vim"
+PLUGINS="$VIM_CONFIG/bundle"
 
-if [[ -e "$HOME/.vimrc" ]]; then
-  echo "Backing up existing vimrc"
-  mv $HOME/.vimrc $HOME/.vimrc.bak
-fi
-
-echo "Linking .vimrc" 
-ln -s $WORKDIR/.vimrc $HOME/.vimrc
-
-if [[ ! -e "$VIM_CONFIG/autoload"  && ! -e "$VIM_CONFIG/bundle" && ! -e "$VIM_CONFIG/colors" ]]; then
-  echo "Creating vim plugin directories"
-  mkdir -pv $HOME/.vim/{autoload,bundle,colors}
-fi
-
-echo "Installing pathogen"
-if [[ ! -e "$VIM_CONFIG/autoload/pathogen.vim" ]]; then
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-fi
-
-echo "Installing color schemes"
-if [[ ! -e "$VIM_CONFIG/colors/molokai.vim" ]]; then
-  pushd $VIM_CONFIG/colors
-  curl -fsSL https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim >> molokai.vim
-  popd
-fi
-
-echo "Installing vim utilities"
-pushd $VIM_CONFIG/bundle
+echo "Installing Vim Plugins"
+pushd $PLUGINS
 if [[ ! -d "./nerdtree" ]]; then
   echo "Installing NERDTree"
   git clone https://github.com/preservim/nerdtree.git
@@ -55,17 +30,11 @@ fi
 if [[ ! -d  "./vim-jsx-typescript" ]]; then
   git clone https://github.com/peitalin/vim-jsx-typescript
 fi
-if [[ ! -d "./coc.nvim" ]]; then
-  git clone https://github.com/neoclide/coc.nvim
+if [[ ! -d "./vim-test" ]]; then
+  git clone https://github.com/vim-test/vim-test
 fi
 
-echo "Installing dependencies for coc.nvim"
-pushd coc.nvim 
-yarn install
-# Exit coc.nvim dir
-popd
-echo "Done!"
-# exit .vim/bundle dir
+echo "Successfully installed plugins"
 popd
 exit 0
 
