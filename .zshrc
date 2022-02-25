@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Load zsh autocomplete
+# autoload -Uz compinit && compinit
+
 # Pull in files from .zshincludes
 if [[ -d "~/.zsh_includes" ]]; then
   for file in ~/.zsh_includes/*.zsh; do
@@ -18,9 +21,6 @@ fi
 
 [[ $- != *i* ]] && return
 
-# [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
-# # Change the window title of X terminals
 # case ${TERM} in
 # 	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
 # 		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
@@ -108,5 +108,5 @@ alias open="xdg-open"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
