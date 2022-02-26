@@ -68,8 +68,8 @@ xhost +local:root > /dev/null 2>&1
 # shopt -s histappend
 
 #
-# # ex - archive extractor
-# # usage: ex <file>
+#  ex - archive extractor
+#  usage: ex <file>
 function ex ()
 {
   if [ -f $1 ] ; then
@@ -96,7 +96,7 @@ function ex ()
 alias la="ls -latG --color"
 alias open="xdg-open"
 
-# # export JAVA_HOME="/usr/lib/jvm/default"
+# export JAVA_HOME="/usr/lib/jvm/default"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home"
 # 
 # export NVM_DIR="$HOME/.nvm"
@@ -108,5 +108,9 @@ alias open="xdg-open"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [[ -e /usr/local/share/zsh/site-functions/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/local/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+else if [[ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
