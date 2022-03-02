@@ -108,9 +108,15 @@ alias open="xdg-open"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-if [[ -e /usr/local/share/zsh/site-functions/zsh-syntax-highlighting.zsh ]]; then
-  source /usr/local/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+autoload -Uz compinit && compinit
+
+if [[ -e /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ]]; then
+  source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
 else if [[ -e /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if [[ -e '$(which neofetch)' ]]; then
+  neofetch
 fi
 

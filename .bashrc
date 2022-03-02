@@ -202,4 +202,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export MAKEFLAGS='-j4'
 
+if [[ '$(uname)' == 'Linux' ]]; then
+  export PATH='$PATH:/opt/apps/postman'
+fi
 
