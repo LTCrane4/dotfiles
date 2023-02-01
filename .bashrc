@@ -2,11 +2,6 @@
 # ~/.bashrc
 #
 
-# Call neofetch if it exists
-if [[ -e $(which neofetch) ]]; then
-  neofetch
-fi
-
 if [[ -e $(which vim) ]]; then
   export EDITOR="$(which vim)"
 fi
@@ -73,16 +68,6 @@ git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-# if [[ -f "~/.local/bin/powerline-shell" ]]; then
-  # Powerline shell PS1 config
-  #function _update_ps1() {
-    #PS1=$(powerline-shell $?)
-  #}
-
-  #if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    #PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-  # fi  
-#else
   if ${use_color} ; then
 	  # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 	  if type -P dircolors >/dev/null ; then
@@ -186,7 +171,9 @@ alias la="ls -latG --color"
 alias open="xdg-open"
 
 # Git cli completion
-source /usr/share/bash-completion/completions/git
+if [[ -e /usr/share/bash-completion/completions/git ]]; then
+    source /usr/share/bash-completion/completions/git
+fi
 
 export JAVA_HOME="/usr/lib/jvm/default"
 
@@ -205,4 +192,6 @@ export MAKEFLAGS='-j4'
 if [[ '$(uname)' == 'Linux' ]]; then
   export PATH='$PATH:/opt/apps/postman'
 fi
+
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 

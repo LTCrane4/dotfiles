@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Load zsh autocomplete
 # autoload -Uz compinit && compinit
 
@@ -95,6 +88,8 @@ function ex ()
 # Teddy - Aliases
 alias la="ls -latG --color"
 alias open="xdg-open"
+alias python="python3"
+alias pip='pip3'
 
 # export JAVA_HOME="/usr/lib/jvm/default"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-16.0.2.jdk/Contents/Home"
@@ -103,10 +98,6 @@ alias open="xdg-open"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # export MAKEFLAGS='-j4'
 # 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 autoload -Uz compinit && compinit
 
@@ -119,4 +110,10 @@ fi
 if [[ -e '$(which neofetch)' ]]; then
   neofetch
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+alias gitp="git push"
 
