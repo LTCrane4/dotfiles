@@ -150,48 +150,29 @@ ex ()
   fi
 }
 
-# dotnet bash completion
-_dotnet_bash_complete()
-{
-  local word=${COMP_WORDS[COMP_CWORD]}
-
-  local completions
-  completions="$(dotnet complete --position "${COMP_POINT}" "${COMP_LINE}" 2>/dev/null)"
-  if [ $? -ne 0 ]; then
-    completions=""
-  fi
-
-  COMPREPLY=( $(compgen -W "$completions" -- "$word") )
-}
-
-complete -f -F _dotnet_bash_complete dotnet
+# Add Homebrew to path
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Teddy - Aliases
 alias la="ls -latG --color"
 alias open="xdg-open"
+alias python="python3.12"
+alias python3="python3.12"
 
 # Git cli completion
 if [[ -e /usr/share/bash-completion/completions/git ]]; then
     source /usr/share/bash-completion/completions/git
 fi
 
-export JAVA_HOME="/usr/lib/jvm/default"
-
-# USB hot plug fix
-export MTP_NO_PROBE="1"
-
-# Add local binaries to path
-export PATH="/home/teddyc/.local/bin:/usr/local/dotnet:$PATH"
-# . "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export MAKEFLAGS='-j4'
 
-if [[ '$(uname)' == 'Linux' ]]; then
-  export PATH='$PATH:/opt/apps/postman'
-fi
 
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+
+
+
+eval "$(mise activate bash)"
 

@@ -27,7 +27,6 @@ if [[ $shell -eq 1 ]]; then
   echo "Linking .bash_profile"
   ln -s $(pwd)/.bash_profile $HOME/.bash_profile
   source $HOME/.bashrc
-  exit 0
 elif [[ $shell -eq 2 ]]; then
   if [[ -e $ZSHRC ]]; then
     echo "Backing up existing zshrc"
@@ -49,33 +48,22 @@ else
   exit -1
 fi
 
-# if [[ -e "$BASHRC" ]]; then
-#   echo "Backing up existing .bashrc"
-#   mv ~/.bashrc ~/.bashrc.bak
-# fi
-#
-# # Symlink bashrc
-# echo "Symlinking .bashrc"
-# ln -s ./.bashrc ~/.bashrc
-#
-# if [[ -e "$BASH_PROFILE" ]]; then
-#   echo "Moving existing .bash_profile"
-#   mv ~/.bash_profile ~/.bash_profile.bak
-# fi
-#
-# echo "Symlinking .bash_profile"
-# ln -s ./.bash_profile ~/.bash_profile
-#
-# echo "Checking vim installation"
-# if [[ -e $(which vim) ]]; then
-#   echo "Vim install found!"
-#   if [[ -e "~/.vimrc" ]]; then
-#     echo "Backing up existing .vimrc"
-#     mv ~/.vimrc ~/vimrc.bak
-#   fi
-#
-#   ln -s ./vimrc ~/.vimrc
-# else
-#   echo "No vim install detected.  Please install vim and try again"
-# fi
-#
+echo "Checking homebrew installation"
+
+if command -v brew  &> /dev/null; then
+  echo "Homebrew installed"
+else
+  echo "Installing homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo "Install nvm"
+if command -v nvm &> /dev/null;  then
+  echo "Nvm installed"
+else
+  brew install nvm
+fi
+
+# echo "Installing node versions"
+# nvm use --lts
+
